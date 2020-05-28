@@ -1,9 +1,11 @@
 pipeline {
-    agent none
+    agent any
+    options {
+        durabilityHint 'PERFORMANCE_OPTIMIZED'
+    }
     parameters {
         string defaultValue: '', description: 'Frontend Image ID', name: 'FRONTEND_IMAGE_ID'
     }
-
     stages {
         stage('Front-end Verification') {
             steps {
@@ -20,7 +22,6 @@ pipeline {
                     run description: '', filter: 'SUCCESSFUL', name: 'BACKEND_RUN', projectName: 'devoptics/devoptics-deploy/master'
                 }
             }
-            agent any
             steps {
                 // a run parameter will add _JOBNAME and _NUMBER as additional environment variables
                 echo "Going to consume: devoptics-deploy-${BACKEND_RUN}"
