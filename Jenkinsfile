@@ -20,7 +20,7 @@ pipeline {
                 echo "Going to consume: devoptics-deploy-${BACKEND_RUN}"
                 echo "Going to consume: Frontend Image ${FRONTEND_IMAGE_ID}"
                 gateConsumesRun jobName: "devoptics/devoptics-deploy/master", runId: "${BACKEND_RUN}"
-                gateConsumesArtifact type: "docker", id: "${FRONTEND_IMAGE_ID}
+                gateConsumesArtifact type: "docker", id: "${FRONTEND_IMAGE_ID}"
             }
         }
     }
